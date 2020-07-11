@@ -26,7 +26,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<rest-assured.version>4.3.0</rest-assured.version>
 		<testng.version>6.14.3</testng.version>
-		<jackson-databind.version>2.9.4</jackson-databind.version>
+		<jackson-databind.version>2.9.10.5</jackson-databind.version>
 		<jaxb-impl-version>2.1</jaxb-impl-version>
 		<hamcrest.version> 1.3 </hamcrest.version>
 	</properties>
