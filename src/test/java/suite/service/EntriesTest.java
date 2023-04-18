@@ -1,9 +1,9 @@
-package suite.test;
+package suite.service;
 
 import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.Test;
 import suite.base.TestBase;
-import suite.client.EntriesClient;
+import suite.request.client.EntriesClient;
 import suite.core.request.builder.RequestBuilder;
 import suite.dataprovider.TestDP;
 

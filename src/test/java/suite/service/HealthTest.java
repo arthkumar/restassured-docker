@@ -1,9 +1,9 @@
-package suite.test;
+package suite.service;
 
 import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.Test;
 import suite.base.TestBase;
-import suite.client.HealthClient;
+import suite.request.client.HealthClient;
 import suite.core.request.builder.RequestBuilder;
 import suite.dataprovider.TestDP;
 
@@ -21,4 +21,5 @@ public class HealthTest extends TestBase {
     public void verifyHealth(RequestBuilder healthRequest, ResponseSpecification responseSpecification) {
         new HealthClient().makeHealthRequest(healthRequest).then().assertThat().spec(responseSpecification);
     }
+
 }

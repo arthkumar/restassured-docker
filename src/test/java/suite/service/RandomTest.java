@@ -1,9 +1,9 @@
-package suite.test;
+package suite.service;
 
 import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.Test;
 import suite.base.TestBase;
-import suite.client.RandomClient;
+import suite.request.client.RandomClient;
 import suite.core.request.builder.RequestBuilder;
 import suite.dataprovider.TestDP;
 
@@ -29,4 +29,5 @@ public class RandomTest extends TestBase {
     public void verifyEntriesWithParams(RequestBuilder requestBuilder, ResponseSpecification responseSpecification) {
         new RandomClient().makeRandomRequestWithParam(requestBuilder).then().assertThat().spec(responseSpecification);
     }
+
 }
