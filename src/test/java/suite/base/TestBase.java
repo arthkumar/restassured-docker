@@ -4,7 +4,7 @@ import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import org.testng.annotations.BeforeClass;
-import suite.appdata.Endpoint;
+import suite.request.route.BaseURL;
 
 import static io.restassured.RestAssured.baseURI;
 
@@ -12,7 +12,8 @@ public class TestBase {
 
     @BeforeClass
     public void setUp() {
-        baseURI = Endpoint.BASE_URL;
+        baseURI = BaseURL.UAT;
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
     }
+
 }

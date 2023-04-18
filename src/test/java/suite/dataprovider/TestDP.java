@@ -4,54 +4,58 @@ import org.apache.http.HttpStatus;
 import org.testng.annotations.DataProvider;
 import suite.core.request.builder.RequestBuilder;
 import suite.core.response.ResponseSpecs;
-import suite.model.request.EntriesRequestBuilder;
-import suite.model.request.HealthRequestBuilder;
-import suite.model.request.RandomRequestBuilder;
+import suite.request.builder.EntriesRequestBuilder;
+import suite.request.builder.HealthRequestBuilder;
+import suite.request.builder.RandomRequestBuilder;
 
 import static org.hamcrest.Matchers.*;
 
 public class TestDP {
 
+    private RequestBuilder requestBuilder;
+    private final ResponseSpecs responseSpecs = new ResponseSpecs();
+
     @DataProvider(parallel = true)
     public Object[][] healthDP() {
-        RequestBuilder requestBuilder = new HealthRequestBuilder().buildRequest();
+        requestBuilder = new HealthRequestBuilder().buildRequest();
         return new Object[][]{
-                {requestBuilder, new ResponseSpecs().expectedResponseStatus(HttpStatus.SC_OK)},
-                {requestBuilder, new ResponseSpecs().expectedBodyContainsString(containsString("true"))}
+                {requestBuilder, responseSpecs.expectedResponseStatus(HttpStatus.SC_OK)},
+                {requestBuilder, responseSpecs.expectedBodyContainsString(containsString("true"))}
         };
     }
 
     @DataProvider(parallel = true)
     public Object[][] entriesDP() {
-        RequestBuilder requestBuilder = new EntriesRequestBuilder().buildRequest();
+        requestBuilder = new EntriesRequestBuilder().buildRequest();
         return new Object[][]{
-                {requestBuilder, new ResponseSpecs().expectedResponseStatus(HttpStatus.SC_OK)},
-                {requestBuilder, new ResponseSpecs().expectedBodyPathContains("count", is(1425))},
+                {requestBuilder, responseSpecs.expectedResponseStatus(HttpStatus.SC_OK)},
+                {requestBuilder, responseSpecs.expectedBodyPathContains("count", is(1425))},
         };
     }
 
     @DataProvider()
     public Object[][] entriesDPWithParam() {
-        RequestBuilder requestBuilder = new EntriesRequestBuilder().buildRequestWithQueryParam();
+        requestBuilder = new EntriesRequestBuilder().buildRequestWithQueryParam();
         return new Object[][]{
-                {requestBuilder, new ResponseSpecs().expectedBodyPathContains("entries.size()", is(1333))}
+                {requestBuilder, responseSpecs.expectedBodyPathContains("entries.size()", is(1333))}
         };
     }
 
     @DataProvider(parallel = true)
     public Object[][] randomDP() {
-        RequestBuilder requestBuilder = new RandomRequestBuilder().buildRequest();
+        requestBuilder = new RandomRequestBuilder().buildRequest();
         return new Object[][]{
-                {requestBuilder, new ResponseSpecs().expectedResponseStatus(HttpStatus.SC_OK)},
-                {requestBuilder, new ResponseSpecs().expectedBodyPathContains("count", is(1))},
+                {requestBuilder, responseSpecs.expectedResponseStatus(HttpStatus.SC_OK)},
+                {requestBuilder, responseSpecs.expectedBodyPathContains("count", is(1))},
         };
     }
 
     @DataProvider()
     public Object[][] randomDPWithParam() {
-        RequestBuilder requestBuilder = new RandomRequestBuilder().buildRequestWithQueryParam();
+        requestBuilder = new RandomRequestBuilder().buildRequestWithQueryParam();
         return new Object[][]{
-                {requestBuilder, new ResponseSpecs().expectedBodyPathContains("Auth", emptyOrNullString())}
+                {requestBuilder, responseSpecs.expectedBodyPathContains("Auth", emptyOrNullString())}
         };
     }
+
 }

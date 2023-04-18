@@ -1,4 +1,4 @@
-package suite.client;
+package suite.request.client;
 
 import io.restassured.response.Response;
 import suite.core.request.builder.RequestBuilder;
