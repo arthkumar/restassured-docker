@@ -1,8 +1,8 @@
-package suite.service;
+package suite.test.service;
 
 import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.Test;
-import suite.base.TestBase;
+import suite.test.base.TestBase;
 import suite.request.client.HealthClient;
 import suite.core.request.builder.RequestBuilder;
 import suite.dataprovider.TestDP;
