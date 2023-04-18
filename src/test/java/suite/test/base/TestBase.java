@@ -1,4 +1,4 @@
-package suite.base;
+package suite.test.base;
 
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
